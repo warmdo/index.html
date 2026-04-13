@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator Pola Gacor Online</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; max-width: 800px; margin: auto; }
+    h1 { color: #d35400; text-align: center; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    select, button, input { padding: 10px; margin-top: 5px; font-size: 16px; width: 100%; box-sizing: border-box; }
+    button { cursor: pointer; background: #d35400; color: #fff; border: none; border-radius: 5px; }
+    button:hover { background: #e67e22; }
+    pre { background: #fff; padding: 15px; border-radius: 5px; white-space: pre-wrap; max-height: 400px; overflow-y: auto; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<h1>Generator Pola Gacor Online</h1>
+
+<label for="situs">Pilih Nama Situs:</label>
+<select id="situs">
+    <option value="edan777">edan777</option>
+    <option value="republik62">republik62</option>
+    <option value="istana62">istana62</option>
+    <option value="warga62">warga62</option>
+</select>
+
+<label for="game">Pilih Game:</label>
+<select id="game">
+    <option value="Mahjong Ways 1">Mahjong Ways 1</option>
+    <option value="Mahjong Ways 2">Mahjong Ways 2</option>
+    <option value="Wild Bandito">Wild Bandito</option>
+    <option value="Wild Bounty Shadow">Wild Bounty Shadow</option>
+    <option value="Lucky Neko">Lucky Neko</option>
+</select>
+
+<label for="jumlah">Jumlah Pola yang Di-generate:</label>
+<input type="number" id="jumlah" value="1" min="1" max="20">
+
+<button onclick="generatePolaMulti()">Generate Pola</button>
+<button onclick="downloadPola()">Download Hasil</button>
+
+<h2>Hasil Pola:</h2>
+<pre id="hasil"></pre>
+
+<script>
+const manualSpinList = [
+    "10x Manual Spin (BET 1600)",
+    "15x Manual Spin (BET 600)",
+    "15x Manual Spin (BET 800)",
+    "20x Manual Spin (BET 400)",
+    "25x Manual Spin (BET 1200)",
+    "30x Manual Spin (BET 400)",
+    "12x Manual Spin (BET 800)",
+    "18x Manual Spin (BET 400)",
+    "22x Manual Spin (BET 600)",
+    "28x Manual Spin (BET 800)",
+    "35x Manual Spin (BET 1200)"
+];
+
+const autoTurboList = [
+    "30x Auto Turbo ON (BET 400)",
+    "10x Auto Turbo ON (BET 400)",
+    "50x Auto Turbo ON (BET 400)",
+    "80x Auto Turbo ON (BET 600)",
+    "30x Auto Turbo ON (BET 400)",
+    "10x Auto Turbo ON (BET 400)",
+    "50x Auto Turbo ON (BET 400)",
+    "80x Auto Turbo ON (BET 600)",
+    "30x Auto Turbo OFF (BET 600)",
+    "10x Auto Turbo ON (BET 400)",
+    "50x Auto Turbo ON (BET 400)"
+];
+
+const manualTurbo1List = [
+    "9x Manual Turbo ON (BET 400)",
+    "10x Manual Turbo OFF (BET 600)",
+    "10x Manual Turbo ON (BET 400)",
+    "8x Manual Turbo OFF (BET 600)",
+    "12x Manual Turbo ON (BET 800)",
+    "6x Manual Turbo ON (BET 1000)",
+    "9x Manual Turbo OFF (BET 400)",
+    "7x Manual Turbo ON (BET 1200)",
+    "10x Manual Turbo OFF (BET 800)",
+    "5x Manual Turbo ON (BET 600)",
+    "8x Manual Turbo ON (BET 1000)"
+];
+
+const manualTurbo2List = [
+    "10x Manual Turbo ON (BET 1200)",
+    "15x Manual Turbo ON (BET 1000)",
+    "15x Manual Turbo ON (BET 1000)",
+    "20x Manual Turbo ON (BET 800)",
+    "10x Manual Turbo ON (BET 1400)",
+    "25x Manual Turbo ON (BET 600)",
+    "30x Manual Turbo ON (BET 400)",
+    "12x Manual Turbo ON (BET 1200)",
+    "18x Manual Turbo ON (BET 800)",
+    "15x Manual Turbo ON (BET 1400)",
+    "20x Manual Turbo ON (BET 1000)"
+];
+
+let hasilText = "";
+
+function generatePola() {
+    const situs = document.getElementById('situs').value;
+    const game = document.getElementById('game').value;
+    const idx = Math.floor(Math.random() * manualSpinList.length);
+
+    return `
+Pola Gacor saat ini
+${situs} , senang bisa membantu kaka nya ^^
+
+💯 POLA ${game.toUpperCase()} AUTO GACOR 💯
+
+🐲 ${game} 🐲
+
+🔥 Step 1: Panaskan Mesin
+${manualSpinList[idx]}
+
+⚡ Step 2: Pola Utama
+${autoTurboList[idx]}
+
+⛔ Step 3: Kontrol Spin
+${manualTurbo1List[idx]}
+
+💥 Langkah Terakhir
+${manualTurbo2List[idx]}
+
+MINIMAL DEPOSIT 50-250 rb BERKESEMPATAN JADI JUTAWAN
+
+Selamat bermain dan semoga mendapatkan kemenangan nya ya kak ^^
+`;
+}
+
+function generatePolaMulti() {
+    const jumlah = parseInt(document.getElementById('jumlah').value);
+    hasilText = "";
+    for(let i=0; i<jumlah; i++){
+        hasilText += generatePola() + "\n\n-----------------------------\n\n";
+    }
+    document.getElementById('hasil').textContent = hasilText;
+}
+
+function downloadPola() {
+    if(!hasilText){
+        alert("Silakan generate pola terlebih dahulu!");
+        return;
+    }
+    const blob = new Blob([hasilText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "pola_gacor.txt";
+    a.click();
+    URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>
